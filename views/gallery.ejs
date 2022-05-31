@@ -1,0 +1,59 @@
+<% var id=locals.id; var photos=locals.photos; %>
+    <html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body class="bg-gray-300">
+        <div onclick="hideBig(this);" id="bigArea" class="hidden absolute bg-black/70 backdrop-blur-sm w-full h-full z-50 p-10 cursor-pointer">
+            <div class="w-full h-full">
+                <img id="bigImg" class="object-contain w-full h-full block" src="">
+            </div>
+        </div>
+        <section class="text-gray-600 body-font">
+            <div class="container px-5 py-24 mx-auto">
+                <div class="flex w-full mb-8">
+                    <div class="mb-6 lg:mb-0">
+                        <h1 class="sm:text-4xl text-5xl font-bold font-medium title-font mb-2 text-gray-900">Gallery
+                        </h1>
+                        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+                    </div>
+                    <div class="flex-grow"></div>
+                    <button onclick="location.href = 'http://localhost:3030/upload/<%- id %>';"
+                        class="border border-indigo-500 text-indigo-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
+                        UPLOAD
+                    </button>
+                </div>
+                <div class="flex flex-wrap -m-4">
+                    <% for(var i=0; i < photos.length; i++) {%>
+                        <div onclick="makeBig(this)" class="cursor-pointer lg:w-1/4 p-4 w-1/2">
+                            <a class="block relative h-48 rounded overflow-hidden">
+                                <img id="<%= photos[i]._id %> " class="object-cover object-center w-full h-full block"
+                                    src="http://localhost:3030/img/<%= photos[i]._id + "-" + photos[i].name %>">
+                            </a>
+                            <div class="mt-4">
+                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                                    <%= photos[i].name %>
+                                </h3>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+        <script>
+            function makeBig(obj) {
+                var src = obj.children[0].children[0].src;
+                document.getElementById("bigArea").classList.remove("hidden");
+                document.getElementById("bigImg").src = src;
+            }
+            function hideBig(obj) {
+                document.getElementById("bigArea").classList.add("hidden");
+            }
+        </script>
+    </body>
+
+    </html>

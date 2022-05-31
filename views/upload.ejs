@@ -1,0 +1,15 @@
+<% var id=locals.id; %>
+
+  <html>
+
+  <body class="bg-gray-300">
+    <div class="m-48">
+      <form ref='uploadForm' id='uploadForm' action='http://localhost:3030/upload/<%= id %>' method='post'
+        encType="multipart/form-data">
+        <input class="" type="file" name="sampleFile" />
+        <input type='submit' value='Upload!' />
+      </form>
+    </div>
+  </body>
+
+  </html>
