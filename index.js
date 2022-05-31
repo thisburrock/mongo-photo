@@ -31,7 +31,7 @@ app.post('/upload/:id', async function (req, res) {
     sampleFile.mv(uploadPath, function (err) {
         if (err)
             return res.status(500).send(err);
-        res.redirect('http://localhost:3030/gallery/'+id);
+        res.redirect('/gallery/'+id);
     });
 });
 

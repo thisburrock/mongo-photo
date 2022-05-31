@@ -22,7 +22,7 @@
                         <div class="h-1 w-20 bg-indigo-500 rounded"></div>
                     </div>
                     <div class="flex-grow"></div>
-                    <button onclick="location.href = 'http://localhost:3030/upload/<%- id %>';"
+                    <button onclick="location.href = '/upload/<%- id %>';"
                         class="border border-indigo-500 text-indigo-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
                         UPLOAD
                     </button>
@@ -32,7 +32,7 @@
                         <div onclick="makeBig(this)" class="cursor-pointer lg:w-1/4 p-4 w-1/2">
                             <a class="block relative h-48 rounded overflow-hidden">
                                 <img id="<%= photos[i]._id %> " class="object-cover object-center w-full h-full block"
-                                    src="http://localhost:3030/img/<%= photos[i]._id + "-" + photos[i].name %>">
+                                    src="/img/<%= photos[i]._id + "-" + photos[i].name %>">
                             </a>
                             <div class="mt-4">
                                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
